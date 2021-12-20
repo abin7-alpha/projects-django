@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <br>    
+            <a  class="continue-btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Continue Shopping</a>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <br>
+        {% for order,item in productss.items %}
+            {% for products in item %}
+                <div class="cart-row">
+                    <div style="flex:2" class="row-item1"><img class="row-image" src="{{products.product.image.url}}"></div>
+                    <div style="flex:2" class="row-item1"><p>{{products.product.name}}</p></div>
+                    <div style="flex:1" class="row-item1"><p>${{products.product.price}}</p></div>
+                    <div style="flex:1" class="row-item1">
+                        <p class="quantity">{{products.quantity}}x</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <button>Cancel order</button>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

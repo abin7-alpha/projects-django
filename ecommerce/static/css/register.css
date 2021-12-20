@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-image: linear-gradient(to top left, red, rgb(139, 32, 139));
+    height: 100vh;
+    font-weight: 400;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: monospace;
+    margin-bottom: 20px;
+}
+
+label {
+    color: white;
+    font-size: 20px;
+}
+
+
+.register-form {
+    padding: 40px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 1rem;
+    backdrop-filter: blur(200px);
+    filter: blur();
+}
+
+.id-stuff {
+    margin: 2px;
+    width: 300px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.form-group #name{
+    padding: 10px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.form-group #email{
+    padding: 10px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.form-group #password{
+    padding: 10px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+
+.form-group #conf-password{
+    padding: 10px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+#register-button{
+    padding: 20px;
+    background-color: rgb(247, 147, 33);
+    border-color: black;
+    font-size: 20px;
+    font-weight: 400;
+    width: 323px;
+    text-align: center;
+    color: blue;
+    border-radius: 8px;
+}
+
+#register button:hover{
+    cursor: pointer;
+}

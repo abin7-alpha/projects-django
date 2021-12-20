@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> 
+    <title>my site</title>
+    <script type="text/javascript">
+      const user = '{{request.user}}'
+
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getCookie('csrftoken');
+    
+    </script>
+</head>
+<body>
+  <div id="box">
+    <div id="header">
+      <div class="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'img/logo.png' %}">
+          <h1>oovE</h1>
+        </a>
+      </div>
+      <div class="category-navbar">
+        <ul>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Men <i class="fa fa-caret-down" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-content">
+                <div class="content">
+                  <div id="sub-content">
+                    {% for category,sub_categories in men_category.items %}
+                    <div>
+                      <span class="category">{{category}}</span>
+                      {% for name in sub_categories%}
+                        <a href="/products/{{name.category_id}}">{{name}}</a>
+                      {% endfor %}
+                    </div>
+                    {% endfor %}
+                  </div> 
+                </div>  
+              </div>
+            </div>   
+          </li> 
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Women <i class="fa fa-caret-down" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-content">
+                <div class="content">
+                  <div id="sub-content">
+                    {% for category,sub_categories in women_category.items %}
+                    <div>
+                      <span class="category">{{category}}</span>
+                      {% for name in sub_categories%}
+                        <a href="/products/{{name.category_id}}">{{name}}</a>
+                      {% endfor %}
+                    </div>
+                    {% endfor %}
+                  </div> 
+                </div>  
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Kids <i class="fa fa-caret-down" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-content">
+                <div class="content">
+                  <div id="sub-content">
+                    {% for category,sub_categories in kids_category.items %}
+                    <div>
+                      <span class="category">{{category}}</span>
+                      {% for name in sub_categories%}
+                        <a href="/products/{{name.category_id}}">{{name}}</a>
+                      {% endfor %}
+                    </div>
+                    {% endfor %}
+                  </div> 
+                </div>  
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    <script src="{% static 'javascript/cart.js' %}"></script>
+</body>
+</html>
+<div id="search">
+  <form class="search_form" method=GET action="{% url 'search_category' %}">
+    <input type="text" placeholder="search by products.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+</div>
+<nav id="navbar" class="nav">
+    {% if request.user.is_authenticated %}
+    <div id="top-nav-right">
+      <div class="dropdown">
+        <button class="dropbtn" id="profile-button"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{request.user}}
+        </button>
+        <div class="dropdown-content-profile">
+            <a id="profile-anchor" href="{% url 'logout' %}">LOGOUT</a>
+            <hr>
+            <a class="options" href="{% url 'user_orders' %}">Orders</a>
+            <a class="options" href="hi.html">Wishlist</a>
+            <a class="options" href="hi.html">Contact us</a>
+        </div>
+      </div>
+      <a id="cart" href="{% url 'cart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{cartItems}}</a>
+    </div>
+    {% else %}
+    <div id="top-nav-right">
+      <div class="dropdown">
+        <button class="dropbtn" id="profile-button"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile
+        </button>
+        <div class="dropdown-content-profile">
+            <a id="profile-anchor" href="register">LOGIN/SIGNUP</a>
+            <hr>
+            <a id="whishlist" class="options" href="hi.html">Wishlist</a>
+            <a class="options" href="hi.html">Contact us</a>
+        </div>
+      </div>
+        <a id="cart" href="{% url 'cart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+    </div>
+    {% endif %}
+  </nav>  
+</div>
+</div>
+
+  <div id="main-container">
+  {% block content %}
+
+  {% endblock content %}
+  </div>
+
+  <!-- <footer id="contact">
+  <ul>
+  <li>contactno: 7356163784</li>
+  <li>email    : paulebin9@gmail.com</li>
+  </ul>
+  <div id="profile">
+  <a href="https://github.com/abin7-alpha/Python-projects" id="profile-link" target="_blank">profile</a>
+  </div>  
+  </footer> -->
+  <script src="{% static 'javascript/cart.js' %}"></script>
+</body>
+</html>

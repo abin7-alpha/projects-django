@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+  <div id="welcome">
+    <img src="https://images.freekaamaal.com/store_desc_images/1516103172.jpg"
+    class="img-responsive">
+  </div>
+
+  <div id="projects">
+    {% for product in product_names %}
+      <div class="project">
+        <div class="project-tile">
+          <a href="https://playvalorant.com/en-gb/">
+            <img src={{product.img}} for="project3" name="valorant" />
+          </a>
+          <p>{{product.name}}</p>
+        </div>
+      </div>
+    {% endfor %}   
+  </div>
+    
+{% endblock content%}

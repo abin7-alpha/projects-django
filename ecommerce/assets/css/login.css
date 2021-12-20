@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-image: linear-gradient(to top left, rgb(5, 5, 5), rgb(5, 5, 5));
+    height: 100vh;
+    font-weight: 400;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: monospace;
+    margin-bottom: 20px;
+}
+
+
+.login-form {
+    padding: 40px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(200px);
+    filter: blur();
+}
+
+.id-stuff {
+    margin: 2px;
+    width: 300px;
+}
+
+
+#form-group {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+}
+
+#form-group #email{
+    padding: 10px;
+    border: solid;
+}
+
+#form-group #password{
+    padding: 10px;
+    border: solid;
+}
+
+#form-group #login-button{
+    padding: 10px;
+    background-color: rgb(247, 147, 33);
+    border-color: black;
+    font-size: 15px;
+    font-weight: 400;
+    width: 323px;
+    color: white;
+}
+
+#form-group button:hover {
+    cursor: pointer;
+}
+
+#to-reg-form {
+    display: flex;
+}
+
+#to-reg-form a {
+    color: black;
+}
+
+#to-reg-form a:hover {
+    color: white;
+    background-color: black;
+}
